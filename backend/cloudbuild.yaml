@@ -1,11 +1,20 @@
 steps:
   # Build Docker image untuk backend
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/$PROJECT_ID/tcc-be-notes-123230108", "."]
+    args:
+      [
+        "build",
+        "-t",
+        "gcr.io/$PROJECT_ID/t3-tcc-be-notes-123230108",
+        "-f",
+        "backend/Dockerfile",
+        "backend"
+      ]
 
   # Push image ke Container Registry
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/tcc-be-notes-123230108"]
+    args:
+      ["push", "gcr.io/$PROJECT_ID/t3-tcc-be-notes-123230108"]
 
   # Deploy ke Cloud Run
   - name: "gcr.io/cloud-builders/gcloud"
@@ -13,16 +22,14 @@ steps:
       [
         "run",
         "deploy",
-        "tcc-be-notes-123230108",
+        "t3-tcc-be-notes-123230108",
         "--image",
-        "gcr.io/$PROJECT_ID/tcc-be-notes-123230108",
+        "gcr.io/$PROJECT_ID/t3-tcc-be-notes-123230108",
         "--timeout",
         "1000s",
-        "--port",
-        "3000",
         "--region",
         "us-central1",
-        "--allow-unauthenticated",
+        "--allow-unauthenticated"
       ]
 
 options:
