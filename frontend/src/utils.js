@@ -1,0 +1,1 @@
+export const BASE_URL = "https://t3-tcc-be-notes-123230108-118865344431.us-central1.run.app/";
