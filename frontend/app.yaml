@@ -1,5 +1,5 @@
 runtime: nodejs20
-service: T3-tcc-fe-notes-123230108
+service: t3-tcc-fe-notes-123230108
 
 # Tambahkan ini supaya hemat (untuk testing)
 automatic_scaling:
